@@ -17,10 +17,12 @@ set showmatch
 syntax on
 
 " golang omnicomplete
-setlocal omnifunc=syntaxcomplete#Complete
 if $GOROOT != ''
   set rtp+=$GOROOT/misc/vim
 endif
+setlocal omnifunc=syntaxcomplete#Complete
+filetype plugin indent on 
+filetype plugin on
 
 " alias
 nnoremap <silent> <C-L> :noh<C-L><CR>

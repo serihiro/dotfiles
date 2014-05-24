@@ -1,11 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/Users/seri/Documents/chef-work/chef-repo/.chef'
-let g:netrw_dirhist_2='/Users/seri/Documents/vagrant-work/spec/default'
-let g:netrw_dirhist_3='/Users/seri/Documents/ruby-work/rslidesearchjp/.idea'
-let g:netrw_dirhist_4='/Users/seri/.rvm'
-let g:netrw_dirhist_5='/Users/seri/Documents/ruby-work/rslidesearchjp/config/environments'
-let g:netrw_dirhist_6='/Users/seri/Documents/ruby-work/rslidesearchjp/config'
-let g:netrw_dirhist_7='/Users/seri/Documents/ruby-work/rslidesearchjp/config/deploy'
-let g:netrw_dirhist_8='/Users/seri/Documents/ruby-work/rslidesearchjp/config/environments'
-let g:netrw_dirhist_9='/Users/seri/.vim/bundle'
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Users/seri/.rvm/gems/ruby-2.1.1@itsumono/gems/kaminari-0.15.1/app'
+let g:netrw_dirhist_2='/Users/seri/.rvm/gems/ruby-2.1.1@itsumono/gems/kaminari-0.15.1'
+let g:netrw_dirhist_3='/Users/seri/.rvm/gems/ruby-2.1.1@itsumono/gems/kaminari-0.15.1/lib'
+let g:netrw_dirhist_4='/Users/seri/Documents/go_work'
