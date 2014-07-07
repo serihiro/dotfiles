@@ -78,3 +78,7 @@ source "$HOME/.rvm/scripts/rvm"
 
 #alias
 alias ll='ls -la'
+alias rake="noglob rake"
+
+# added by travis gem
+[ -f /Users/seri/.travis/travis.sh ] && source /Users/seri/.travis/travis.sh
