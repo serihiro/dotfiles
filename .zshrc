@@ -73,12 +73,12 @@ fi
 
 [[ -s "$HOME/.gvm/bin/gvm-init.sh" ]] && source "$HOME/.gvm/bin/gvm-init.sh"
 
-export PATH=$PATH:$HOME/.rvm/bin
-source "$HOME/.rvm/scripts/rvm"
-
 #alias
 alias ll='ls -la'
 alias rake="noglob rake"
+alias biv="bundle install --path=vendor/bundle --binstubs=vendor/ruby"
 
 # added by travis gem
 [ -f /Users/seri/.travis/travis.sh ] && source /Users/seri/.travis/travis.sh
+export PATH="$HOME/.rbenv/bin:$PATH"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
