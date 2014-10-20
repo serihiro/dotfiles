@@ -54,11 +54,11 @@ source $ZSH/oh-my-zsh.sh
 
 # Golang by brew
 export GOROOT="/usr/local/opt/go/libexec"
-export GOPATH="/Users/seri/.go"
+export GOPATH="~/.go"
 export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:$GOPATH/bin
 
-export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home -v "1.7"`
+export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home -v "1.8"`
 export PATH=${PATH}:${JAVA_HOME}/bin
 export CATALINA_HOME='/usr/local/opt/tomcat/libexec'
 export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256m -Xss2m"
