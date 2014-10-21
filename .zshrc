@@ -51,7 +51,6 @@ ZSH_THEME="cypher"
 plugins=(git bundler) 
 
 source $ZSH/oh-my-zsh.sh
-
 # Golang by brew
 export GOROOT="/usr/local/opt/go/libexec"
 export GOPATH="~/.go"
@@ -82,3 +81,8 @@ alias biv="bundle install --path=vendor/bundle --binstubs=vendor/ruby"
 [ -f /Users/seri/.travis/travis.sh ] && source /Users/seri/.travis/travis.sh
 export PATH="$HOME/.rbenv/bin:$PATH"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+
+export NVM_DIR="${HOME}/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
