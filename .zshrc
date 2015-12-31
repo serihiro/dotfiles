@@ -72,6 +72,10 @@ fi
 
 [[ -s "$HOME/.gvm/bin/gvm-init.sh" ]] && source "$HOME/.gvm/bin/gvm-init.sh"
 
+#android
+export ANDROID_HOME=$HOME/Library/android-sdk-macosx
+export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+
 #alias
 alias ll='ls -la'
 alias rake="noglob rake"
@@ -86,3 +90,6 @@ export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 export NVM_DIR="${HOME}/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+nvm use 5.3.0
+source /Users/seri/.evm/scripts/evm
+export LIBRARY_PATH=/usr/local/lib:$LIBRARY_PATH
