@@ -51,45 +51,63 @@ ZSH_THEME="cypher"
 plugins=(git bundler) 
 
 source $ZSH/oh-my-zsh.sh
+
+bindkey -e
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"export PATH="$HOME/bin:$PATH"
+
+# Ruby
+if [ -f $HOME/.rbenv ]; then
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  $(rbenv init -)
+fi
+
 # Golang by brew
 export GOROOT="/usr/local/opt/go/libexec"
 export GOPATH="~/.go"
 export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:$GOPATH/bin
 
+# Java
 export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home -v "1.8"`
 export PATH=${PATH}:${JAVA_HOME}/bin
-export CATALINA_HOME='/usr/local/opt/tomcat/libexec'
-export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256m -Xss2m"
 export EDITOR='vim'
-
 export PATH=$PATH:/usr/local/heroku/bin
 
-if [ -f $HOME/.phpenv/bin/phpenv ]; then
-  export PATH=$PATH:$HOME/.phpenv/bin
-  eval "$(phpenv init -)"
-fi
-
-[[ -s "$HOME/.gvm/bin/gvm-init.sh" ]] && source "$HOME/.gvm/bin/gvm-init.sh"
-
-#android
+# Android
 export ANDROID_HOME=$HOME/Library/android-sdk-macosx
 export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
-#alias
+# node
+if [ -f $HOME/.nodebrew ]; then
+  export PATH=$HOME/.nodebrew/current/bin:$PATH
+  nodebrew use 6.3.1
+fi
+
+# to use brew openssl
+if [ -f /usr/local/Cellar/openssl ]; then
+  export PATH="/usr/local/Cellar/openssl/1.0.2l/bin:$PATH"
+fi
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f $HOME/google-cloud-sdk ]; then
+  source '/Users/serizawa/google-cloud-sdk/path.zsh.inc'
+fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f $HOME//google-cloud-sdk ]; then
+  source '/Users/serizawa/google-cloud-sdk/completion.zsh.inc'
+fi
+
+# embulk
+if [ -f $HOME/.embulk ]; then
+  export PATH="$HOME/.embulk/bin:$PATH"
+fi
+
+# alias
 alias ll='ls -la'
 alias rake="noglob rake"
 alias biv="bundle install --path=vendor/bundle --binstubs=vendor/ruby"
-
-# added by travis gem
-[ -f /Users/seri/.travis/travis.sh ] && source /Users/seri/.travis/travis.sh
-export PATH="$HOME/.rbenv/bin:$PATH"
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-
-export NVM_DIR="${HOME}/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-nvm use 5.3.0
-source /Users/seri/.evm/scripts/evm
-export LIBRARY_PATH=/usr/local/lib:$LIBRARY_PATH
+alias dce="docker-compose exec"
+alias dcea="docker-compose exec api"
+alias dcew="docker-compose exec web"
+alias resettest="bin/rake db:drop db:create db:schema:load RAILS_ENV=test"

@@ -1,3 +1,7 @@
 *~
 *.swap
 .DS_Store
+.idea
+vendor/ruby
+vendor/bundle
+
