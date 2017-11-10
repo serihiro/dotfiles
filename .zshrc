@@ -56,9 +56,9 @@ bindkey -e
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"export PATH="$HOME/bin:$PATH"
 
 # Ruby
-if [ -f $HOME/.rbenv ]; then
+if [ -d $HOME/.rbenv ]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
-  $(rbenv init -)
+  eval "$(rbenv init -)"
 fi
 
 # Golang by brew
@@ -78,28 +78,28 @@ export ANDROID_HOME=$HOME/Library/android-sdk-macosx
 export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
 # node
-if [ -f $HOME/.nodebrew ]; then
+if [ -d $HOME/.nodebrew ]; then
   export PATH=$HOME/.nodebrew/current/bin:$PATH
   nodebrew use 6.3.1
 fi
 
 # to use brew openssl
-if [ -f /usr/local/Cellar/openssl ]; then
+if [ -d /usr/local/Cellar/openssl ]; then
   export PATH="/usr/local/Cellar/openssl/1.0.2l/bin:$PATH"
 fi
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f $HOME/google-cloud-sdk ]; then
+if [ -d $HOME/google-cloud-sdk ]; then
   source '/Users/serizawa/google-cloud-sdk/path.zsh.inc'
 fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f $HOME//google-cloud-sdk ]; then
+if [ -d $HOME//google-cloud-sdk ]; then
   source '/Users/serizawa/google-cloud-sdk/completion.zsh.inc'
 fi
 
 # embulk
-if [ -f $HOME/.embulk ]; then
+if [ -d $HOME/.embulk ]; then
   export PATH="$HOME/.embulk/bin:$PATH"
 fi
 
@@ -111,3 +111,4 @@ alias dce="docker-compose exec"
 alias dcea="docker-compose exec api"
 alias dcew="docker-compose exec web"
 alias resettest="bin/rake db:drop db:create db:schema:load RAILS_ENV=test"
+export PATH="$HOME/.embulk/bin:$PATH"
