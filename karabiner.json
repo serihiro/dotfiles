@@ -1,0 +1,11 @@
+{
+  "profiles": [
+    {
+      "name": "cap to control",
+      "selected": true,
+      "simple_modifications": {
+        "caps_lock": "right_control"
+      }
+    }
+  ]
+}
