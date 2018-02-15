@@ -68,7 +68,7 @@ export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:$GOPATH/bin
 
 # Java
-export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home -v "1.8"`
+export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home -v "9"`
 export PATH=${PATH}:${JAVA_HOME}/bin
 export EDITOR='vim'
 export PATH=$PATH:/usr/local/heroku/bin
