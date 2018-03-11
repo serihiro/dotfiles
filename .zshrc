@@ -63,7 +63,7 @@ fi
 
 # Golang by brew
 export GOROOT="/usr/local/opt/go/libexec"
-export GOPATH="~/.go"
+export GOPATH="$HOME/.go"
 export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:$GOPATH/bin
 
@@ -112,4 +112,6 @@ alias dcea="docker-compose exec api"
 alias dcew="docker-compose exec web"
 alias resettest="bin/rake db:drop db:create db:schema:load RAILS_ENV=test"
 alias cp14="clang++ -std=c++14 -Wall"
+alias gsu="git fetch upstream && git merge upstream/master"
 export PATH="$HOME/.embulk/bin:$PATH"
+export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
