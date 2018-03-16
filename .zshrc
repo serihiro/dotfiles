@@ -80,7 +80,7 @@ export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 # node
 if [ -d $HOME/.nodebrew ]; then
   export PATH=$HOME/.nodebrew/current/bin:$PATH
-  nodebrew use 6.3.1
+  nodebrew use 9.8.0
 fi
 
 # to use brew openssl
