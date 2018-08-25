@@ -61,14 +61,16 @@ if [ -d $HOME/.rbenv ]; then
   eval "$(rbenv init -)"
 fi
 
-# Golang by brew
-export GOROOT="/usr/local/opt/go/libexec"
-export GOPATH="$HOME/.go"
-export PATH=$PATH:$GOROOT/bin
-export PATH=$PATH:$GOPATH/bin
+# Go
+if [ -d $HOME/.goenv ]; then
+  export GOENV_ROOT=$HOME/.goenv
+  export GOPATH=$HOME/go
+  export PATH="$GOENV_ROOT/bin:$GOPATH/bin:$PATH"
+  eval "$(goenv init -)"
+fi
 
 # Java
-export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home -v "9"`
+export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home -v "1.8"`
 export PATH=${PATH}:${JAVA_HOME}/bin
 export EDITOR='vim'
 export PATH=$PATH:/usr/local/heroku/bin
@@ -112,6 +114,17 @@ if [ -d $HOME/.pyenv ]; then
   fi
 fi
 
+# rustup
+if [ -d $HOME/.cargo ]; then
+  source $HOME/.cargo/env
+fi
+
+# OCaml
+if [ -d $HOME/.opam ]; then
+  . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+  alias ocaml="rlwrap ocaml"
+fi
+
 # alias
 alias ll='ls -la'
 alias rake="noglob rake"
@@ -121,6 +134,9 @@ alias dcea="docker-compose exec api"
 alias dcew="docker-compose exec web"
 alias resettest="bin/rake db:drop db:create db:schema:load RAILS_ENV=test"
 alias cp14="clang++ -std=c++14 -Wall"
+alias cp11="clang++ -std=c++11 -Wall"
 alias gsu="git fetch upstream && git merge upstream/master"
 export PATH="$HOME/.embulk/bin:$PATH"
 export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
+export DYLD_LIBRARY_PATH=/opt/intel/lib
+

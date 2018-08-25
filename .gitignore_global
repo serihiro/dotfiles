@@ -4,4 +4,4 @@
 .idea
 vendor/ruby
 vendor/bundle
-
+venv
