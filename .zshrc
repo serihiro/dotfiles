@@ -70,16 +70,22 @@ if [ -d $HOME/.goenv ]; then
 fi
 
 # Java
-export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home -v "1.8"`
+export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home -v "10"`
 export PATH=${PATH}:${JAVA_HOME}/bin
 export EDITOR='vim'
-export PATH=$PATH:/usr/local/heroku/bin
+
+# heroku toolbelt
+if [ -d /usr/local/heroku ]; then
+  export PATH=$PATH:/usr/local/heroku/bin
+fi
 
 # Android
-export ANDROID_HOME=$HOME/Library/android-sdk-macosx
-export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+if [ -d $HOME/Library/android-sdk-macosx ]; then
+  export ANDROID_HOME=$HOME/Library/android-sdk-macosx
+  export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+fi
 
-# node
+# Node.js
 if [ -d $HOME/.nodebrew ]; then
   export PATH=$HOME/.nodebrew/current/bin:$PATH
   nodebrew use 9.8.0
@@ -88,16 +94,13 @@ fi
 # to use brew openssl
 if [ -d /usr/local/Cellar/openssl ]; then
   export PATH="/usr/local/Cellar/openssl/1.0.2l/bin:$PATH"
+  export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
 fi
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -d $HOME/google-cloud-sdk ]; then
-  source '/Users/serizawa/google-cloud-sdk/path.zsh.inc'
-fi
-
-# The next line enables shell command completion for gcloud.
-if [ -d $HOME//google-cloud-sdk ]; then
-  source '/Users/serizawa/google-cloud-sdk/completion.zsh.inc'
+  source '~/google-cloud-sdk/path.zsh.inc'
+  source '~/google-cloud-sdk/completion.zsh.inc'
 fi
 
 # embulk
@@ -125,6 +128,11 @@ if [ -d $HOME/.opam ]; then
   alias ocaml="rlwrap ocaml"
 fi
 
+# Intel MKL
+if [ -d /opt/intel ]; then
+  export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/opt/intel/lib
+fi
+
 # alias
 alias ll='ls -la'
 alias rake="noglob rake"
@@ -136,7 +144,4 @@ alias resettest="bin/rake db:drop db:create db:schema:load RAILS_ENV=test"
 alias cp14="clang++ -std=c++14 -Wall"
 alias cp11="clang++ -std=c++11 -Wall"
 alias gsu="git fetch upstream && git merge upstream/master"
-export PATH="$HOME/.embulk/bin:$PATH"
-export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
-export DYLD_LIBRARY_PATH=/opt/intel/lib
 
