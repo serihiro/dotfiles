@@ -1,12 +1,12 @@
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
-zplug "yous/lime"
 
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-syntax-highlighting"
 
+zplug "themes/cypher", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/command-not-found", from:oh-my-zsh
 
