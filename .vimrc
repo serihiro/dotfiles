@@ -1,3 +1,6 @@
+execute pathogen#infect()
+filetype plugin indent on
+
 set enc=utf-8
 set fenc=utf-8
 set number
@@ -14,15 +17,10 @@ set hlsearch
 set nowrap
 set showmatch
 
-syntax on
-
-" golang omnicomplete
-if $GOROOT != ''
-  set rtp+=$GOROOT/misc/vim
-endif
-setlocal omnifunc=syntaxcomplete#Complete
-filetype plugin indent on 
-filetype plugin on
-
 " alias
 nnoremap <silent> <C-L> :noh<C-L><CR>
+
+syntax enable
+set background=dark
+colorscheme molokai
+
