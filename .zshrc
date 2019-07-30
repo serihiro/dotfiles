@@ -6,9 +6,11 @@ zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-syntax-highlighting"
 
-zplug "themes/cypher", from:oh-my-zsh
+zplug mafredri/zsh-async, from:github
+zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
+
 zplug "plugins/git", from:oh-my-zsh
-zplug "plugins/command-not-found", from:oh-my-zsh
+zplug "plugins/bundler", from:oh-my-zsh
 
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "
@@ -97,13 +99,23 @@ fi
 
 # Intel MKL
 if [ -d /opt/intel ]; then
-  export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/opt/intel/lib
+  export DYLD_LIBRARY_PATH="/opt/intel/lib/intel64:/opt/intel/lib:/opt/intel/mkl/lib:$DYLD_LIBRARY_PATH"
 fi
 
 # CUDA PATH
 if [ -d /Developer/NVIDIA ]; then
   CUDA_HOME=/Developer/NVIDIA/CUDA-9.2
   PATH="$CUDA_HOME/bin:$PATH"
+fi
+
+# stack
+export PATH="$HOME/.local/bin:$PATH"
+
+PLATFORM=`uname`
+if [ "${PLATFORM}" = "Darwin" ];then
+  alias ls='ls -G'
+elif [ "${PLATFORM}" = "Linux" ];then
+  alias ls='ls --color=auto'
 fi
 
 # alias
@@ -114,7 +126,8 @@ alias dce="docker-compose exec"
 alias dcea="docker-compose exec api"
 alias dcew="docker-compose exec web"
 alias resettest="bin/rake db:drop db:create db:schema:load RAILS_ENV=test"
-alias cp14="clang++ -std=c++14 -Wall"
-alias cp11="clang++ -std=c++11 -Wall"
+alias cp14="clang++ -std=c++14 -Wall -Wextra"
+alias cp11="clang++ -std=c++11 -Wall -Wextra"
+alias gp14="g++-8 -std=c++14 -Wall -Wextra"
 alias gsu="git fetch upstream && git merge upstream/master"
 
