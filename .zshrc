@@ -57,7 +57,7 @@ fi
 # Node.js
 if [ -d $HOME/.nodebrew ]; then
   export PATH=$HOME/.nodebrew/current/bin:$PATH
-  nodebrew use 9.8.0
+  nodebrew use 12.14.1
 fi
 
 # to use brew openssl
@@ -121,13 +121,13 @@ fi
 # alias
 alias ll='ls -la'
 alias rake="noglob rake"
-alias biv="bundle install --path=vendor/bundle --binstubs=vendor/ruby"
+alias biv="bundle config set path 'vendor/bundle';bundle init;bundle binstubs --path=vendor/ruby;bundle install;"
 alias dce="docker-compose exec"
 alias dcea="docker-compose exec api"
 alias dcew="docker-compose exec web"
 alias resettest="bin/rake db:drop db:create db:schema:load RAILS_ENV=test"
 alias cp14="clang++ -std=c++14 -Wall -Wextra"
 alias cp11="clang++ -std=c++11 -Wall -Wextra"
-alias gp14="g++-8 -std=c++14 -Wall -Wextra"
+alias gp14="g++-9 -std=c++14 -Wall -Wextra"
 alias gsu="git fetch upstream && git merge upstream/master"
 
