@@ -57,7 +57,7 @@ fi
 # Node.js
 if [ -d $HOME/.nodebrew ]; then
   export PATH=$HOME/.nodebrew/current/bin:$PATH
-  nodebrew use 12.14.1
+  nodebrew use 15.12.0
 fi
 
 # to use brew openssl
@@ -126,8 +126,8 @@ alias dce="docker-compose exec"
 alias dcea="docker-compose exec api"
 alias dcew="docker-compose exec web"
 alias resettest="bin/rake db:drop db:create db:schema:load RAILS_ENV=test"
-alias cp14="clang++ -std=c++14 -Wall -Wextra"
-alias cp11="clang++ -std=c++11 -Wall -Wextra"
-alias gp14="g++-9 -std=c++14 -Wall -Wextra"
+alias cp17="clang++ -std=c++17 -stdlib=libc++ -Wall -O2"
+alias gp17="g++-10 -std=gnu++17 -Wall -Wextra -O2"
 alias gsu="git fetch upstream && git merge upstream/master"
+alias c11="gcc-10 -std=c11 -Wall -Wextra -O2"
 
