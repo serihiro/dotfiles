@@ -121,7 +121,7 @@ fi
 # alias
 alias ll='ls -la'
 alias rake="noglob rake"
-alias biv="bundle config set path 'vendor/bundle';bundle init;bundle binstubs --path=vendor/ruby;bundle install;"
+alias biv="bundle config set path 'vendor/bundle';bundle init;bundle install;"
 alias dce="docker-compose exec"
 alias dcea="docker-compose exec api"
 alias dcew="docker-compose exec web"
