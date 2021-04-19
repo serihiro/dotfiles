@@ -39,7 +39,7 @@ if [ -d $HOME/.goenv ]; then
 fi
 
 # Java
-export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home -v "1.8"`
+export JAVA_HOME=`/usr/libexec/java_home -v "1.8"`
 export PATH=${PATH}:${JAVA_HOME}/bin
 export EDITOR='vim'
 
