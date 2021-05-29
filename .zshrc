@@ -39,8 +39,6 @@ if [ -d $HOME/.goenv ]; then
 fi
 
 # Java
-export JAVA_HOME=`/usr/libexec/java_home -v "1.8"`
-export PATH=${PATH}:${JAVA_HOME}/bin
 export EDITOR='vim'
 
 # heroku toolbelt
@@ -131,3 +129,7 @@ alias gp17="g++-10 -std=gnu++17 -Wall -Wextra -O2"
 alias gsu="git fetch upstream && git merge upstream/master"
 alias c11="gcc-10 -std=c11 -Wall -Wextra -O2"
 
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="${HOME}/.sdkman"
+[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
