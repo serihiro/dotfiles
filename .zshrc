@@ -66,8 +66,8 @@ fi
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -d $HOME/google-cloud-sdk ]; then
-  source '~/google-cloud-sdk/path.zsh.inc'
-  source '~/google-cloud-sdk/completion.zsh.inc'
+  source ${HOME}/google-cloud-sdk/path.zsh.inc
+  source ${HOME}/google-cloud-sdk/completion.zsh.inc
 fi
 
 # embulk
@@ -117,17 +117,19 @@ fi
 # alias
 alias ll='ls -la'
 alias rake="noglob rake"
-alias biv="bundle config set path 'vendor/bundle';bundle init;bundle install;"
-alias dce="docker-compose exec"
-alias dcea="docker-compose exec api"
-alias dcew="docker-compose exec web"
+alias biv="bundle config set path 'vendor/bundle';bundle install;"
+alias dce="docker compose exec"
+alias dcea="docker compose exec api"
+alias dcew="docker compose exec web"
 alias resettest="bin/rake db:drop db:create db:schema:load RAILS_ENV=test"
 alias cp17="clang++ -std=c++17 -stdlib=libc++ -Wall -O2"
-alias gp17="g++-10 -std=gnu++17 -Wall -Wextra -O2"
+alias gp17="g++-11 -std=gnu++17 -Wall -Wextra -O2"
 alias gsu="git fetch upstream && git merge upstream/master"
-alias c11="gcc-10 -std=c11 -Wall -Wextra -O2"
-
+alias c11="gcc-11 -std=c11 -Wall -Wextra -O2"
+alias ojt="oj t --ignore-spaces-and-newline"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="${HOME}/.sdkman"
 [[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
+
+eval "$(direnv hook zsh)"
