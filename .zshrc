@@ -58,12 +58,6 @@ if [ -d $HOME/.nodebrew ]; then
   nodebrew use 15.12.0
 fi
 
-# to use brew openssl
-if [ -d /usr/local/Cellar/openssl ]; then
-  export PATH="/usr/local/Cellar/openssl/1.0.2l/bin:$PATH"
-  export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
-fi
-
 # The next line updates PATH for the Google Cloud SDK.
 if [ -d $HOME/google-cloud-sdk ]; then
   source ${HOME}/google-cloud-sdk/path.zsh.inc
