@@ -132,4 +132,6 @@ alias ojt="oj t --ignore-spaces-and-newline"
 export SDKMAN_DIR="${HOME}/.sdkman"
 [[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
 
-eval "$(direnv hook zsh)"
+if [ -d /usr/local/bin/direnv ]; then
+  eval "$(direnv hook zsh)"
+fi
