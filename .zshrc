@@ -79,6 +79,7 @@ fi
 # rustup
 if [ -d $HOME/.cargo ]; then
   source $HOME/.cargo/env
+  export RUSTC_WRAPPER=$(which sccache)
 fi
 
 # OCaml
