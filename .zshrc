@@ -55,7 +55,7 @@ fi
 # Node.js
 if [ -d $HOME/.nodebrew ]; then
   export PATH=$HOME/.nodebrew/current/bin:$PATH
-  nodebrew use 15.12.0
+  nodebrew use 20.5.1
 fi
 
 # The next line updates PATH for the Google Cloud SDK.
@@ -121,12 +121,16 @@ alias cp17="clang++ -std=c++17 -stdlib=libc++ -Wall -O2"
 alias gp17="g++-11 -std=gnu++17 -Wall -Wextra -O2"
 alias gsu="git fetch upstream && git merge upstream/master"
 alias c11="gcc-11 -std=c11 -Wall -Wextra -O2"
-alias ojt="oj t --ignore-spaces-and-newline"
-
+alias ojt="oj t -c \"python main.py\" --ignore-spaces-and-newline"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="${HOME}/.sdkman"
 [[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
 
-if [ -d /usr/local/bin/direnv ]; then
+if [ -s /usr/local/bin/direnv ]; then
   eval "$(direnv hook zsh)"
 fi
+
+# Load zfunc
+fpath+=~/.zfunc
+autoload -Uz compinit && compinit
+
