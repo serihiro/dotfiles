@@ -24,22 +24,11 @@ zplug load
 bindkey -e
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"export PATH="$HOME/bin:$PATH"
 
-# Ruby
-if [ -d $HOME/.rbenv ]; then
-  export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init -)"
-fi
+export EDITOR='vim'
 
 # Go
-if [ -d $HOME/.goenv ]; then
-  export GOENV_ROOT=$HOME/.goenv
-  export GOPATH=$HOME/go
-  export PATH="$GOENV_ROOT/bin:$GOPATH/bin:$PATH"
-  eval "$(goenv init -)"
-fi
-
-# Java
-export EDITOR='vim'
+export GOPATH=$HOME/go
+export PATH="$GOPATH/bin:$PATH"
 
 # heroku toolbelt
 if [ -d /usr/local/heroku ]; then
@@ -52,28 +41,10 @@ if [ -d $HOME/Library/android-sdk-macosx ]; then
   export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 fi
 
-# Node.js
-if [ -d $HOME/.nodebrew ]; then
-  export PATH=$HOME/.nodebrew/current/bin:$PATH
-  nodebrew use 20.5.1
-fi
-
 # The next line updates PATH for the Google Cloud SDK.
 if [ -d $HOME/google-cloud-sdk ]; then
   source ${HOME}/google-cloud-sdk/path.zsh.inc
   source ${HOME}/google-cloud-sdk/completion.zsh.inc
-fi
-
-# embulk
-if [ -d $HOME/.embulk ]; then
-  export PATH="$HOME/.embulk/bin:$PATH"
-fi
-
-# pyenv
-if [ -d $HOME/.pyenv ]; then
-  export PYENV_ROOT="$HOME/.pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init --path)"
 fi
 
 # rustup
@@ -122,9 +93,6 @@ alias gp17="g++-11 -std=gnu++17 -Wall -Wextra -O2"
 alias gsu="git fetch upstream && git merge upstream/master"
 alias c11="gcc-11 -std=c11 -Wall -Wextra -O2"
 alias ojt="oj t -c \"python main.py\" --ignore-spaces-and-newline"
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="${HOME}/.sdkman"
-[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
 
 if [ -s /usr/local/bin/direnv ]; then
   eval "$(direnv hook zsh)"
@@ -133,4 +101,10 @@ fi
 # Load zfunc
 fpath+=~/.zfunc
 autoload -Uz compinit && compinit
+
+# Load rtx
+if [ -s ~/.local/share/rtx/bin/rtx ]; then
+  eval "$(~/.local/share/rtx/bin/rtx activate zsh)"
+  export PATH="$HOME/.local/share/rtx/shims:$PATH"
+fi
 
