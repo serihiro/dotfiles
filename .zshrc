@@ -102,9 +102,9 @@ fi
 fpath+=~/.zfunc
 autoload -Uz compinit && compinit
 
-# Load rtx
-if [ -s ~/.local/share/rtx/bin/rtx ]; then
-  eval "$(~/.local/share/rtx/bin/rtx activate zsh)"
-  export PATH="$HOME/.local/share/rtx/shims:$PATH"
+# Load mise
+if [ -s /Users/serihiro/.local/bin/mise ]; then
+  eval "$($HOME/.local/bin/mise activate zsh)"
+  export PATH="$HOME/.local/share/mise/shims:$PATH"
 fi
 
