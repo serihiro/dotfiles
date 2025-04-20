@@ -10,6 +10,7 @@ if [ "${PLATFORM}" = "Darwin" ];then
   if [ ! -d /usr/local/Cellar/zplug ];then
     echo "installing zplug..."
     brew install zplug
+    source /opt/homebrew/opt/zplug/init.zsh
   fi
 elif [ "${PLATFORM}" = "Linux" ];then
   if [ ! -d ~/.zplug ];then
