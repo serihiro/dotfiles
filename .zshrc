@@ -103,6 +103,13 @@ fi
 fpath+=~/.zfunc
 autoload -Uz compinit && compinit
 
+# kubectl alias
+if command -v kubectl >/dev/null 2>&1; then
+  source <(kubectl completion zsh)
+  alias k=kubectl
+  compdef __start_kubectl k
+fi
+
 # Load mise
 if [ -s /Users/serihiro/.local/bin/mise ]; then
   eval "$($HOME/.local/bin/mise activate zsh)"
